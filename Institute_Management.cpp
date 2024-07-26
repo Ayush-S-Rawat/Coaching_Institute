@@ -26,16 +26,21 @@ class Student
 void Student::Entry()
 { 
     system(CLEAR_SCREEN);
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Student Id : ";
     cin >> Student_Id;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Name : ";
     getline(cin, Name);
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Class : ";
     cin>>cls;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Stream : ";
     cin >> Stream;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Subjects you want to study :\n";
-    cin >> sub;
+    getline(cin, sub);
 }
 
 void Student::Display()
@@ -61,6 +66,7 @@ void Input()
     { 
         S.Entry();
         outf.write((char*)&S,sizeof(S));
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout<<"\n\nDo you want to enter more records : ";
         cin>>ch;
         ch=toupper(ch);
@@ -95,6 +101,7 @@ void search_id()
     Student S;
     char found='f';
     string sid;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Student ID you want to search : ";
     cin >> sid;
     ifstream inf("sdetail.dat",ios::binary);
@@ -119,6 +126,7 @@ void search_name()
     Student S;
     char found='f';
     string sname;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Student Name you want to search : ";
     getline(cin, sname);
     ifstream inf("sdetail.dat",ios::binary);
@@ -150,6 +158,7 @@ void modify_id()
         cin.get();
         return;
     }
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter the Student ID to modify : ";
     cin>>sid;
     file.seekp(0,ios::beg);
@@ -158,6 +167,7 @@ void modify_id()
         if(sid == S.return_id())
         { 
             S.Display();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout<<"\n\nConfirm the record (Y/N) : ";
             cin>>ch;
             ch=toupper(ch);
@@ -194,6 +204,7 @@ void modify_name()
 	    cin.get();
 	    return;
     }
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter the Student Name to modify : ";
     getline(cin, sname);
     file.seekp(0,ios::beg);
@@ -202,6 +213,7 @@ void modify_name()
         if(sname == S.return_name())
         {
             S.Display();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout<<"\n\nConfirm the record (Y/N) : ";
             cin>>ch;
             ch=toupper(ch);
@@ -231,8 +243,10 @@ void Sdelete()
     char ch,found='f';
     string sname, sid;
     Student S;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Name of Student : ";
     getline(cin, sname);
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter ID of Student : ";
     cin>>sid;
     ofstream fout("temp.dat",ios::binary);
@@ -243,6 +257,7 @@ void Sdelete()
         {
             S.Display();
             found='t';
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout<<"\n\nConfirm Record (Y/N) : ";
             cin>>ch;
             ch=toupper(ch);
@@ -386,12 +401,15 @@ class Teacher
 void Teacher::TEntry()
 {
     system(CLEAR_SCREEN);
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Teacher Id : ";
     cin>>Teacher_Id;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Name : ";
     getline(cin, TName);
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Subject you teach : ";
-    cin >> subject;
+    getline(cin, subject);
 }
 
 void Teacher::TDisplay()
@@ -417,6 +435,7 @@ void TInput()
     {
         T.TEntry();
         outf.write((char*)&T,sizeof(T));
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout<<"\n\nDo you want to enter more records : ";
         cin>>ch;
         ch=toupper(ch);
@@ -451,6 +470,7 @@ void Tsearch_id()
     Teacher T;
     char found='f';
     string tid;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Teacher ID you want to search : ";
     cin>>tid;
     ifstream inf("tdetail.dat",ios::binary);
@@ -475,6 +495,7 @@ void Tsearch_subject()
     Teacher T;
     char found='f';
     string tsub;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Teacher ID you want to search : ";
     cin >> tsub;
     ifstream inf("tdetail.dat",ios::binary);
@@ -506,6 +527,7 @@ void Tmodify_id()
 	    cin.get();
 	    return;
     }
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter the Teacher ID to modify : ";
     cin>>tid;
     file.seekp(0,ios::beg);
@@ -514,6 +536,7 @@ void Tmodify_id()
         if(tid == T.return_tid())
         {
             T.TDisplay();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout<<"\n\nConfirm the record : ";
             cin>>ch;
             if(ch=='y' || ch=='Y')
@@ -545,6 +568,7 @@ void Tmodify_subject()
 	    cin.get();
 	    return;
     }
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter the Teacher Subject to modify : ";
     cin >> tsub;
     file.seekp(0,ios::beg);
@@ -553,6 +577,7 @@ void Tmodify_subject()
         if(tsub == T.return_tsubject())
 	    {
             T.TDisplay();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout<<"\n\nConfirm the record : ";
             cin>>ch;
             if(ch=='y' || ch=='Y')
@@ -577,8 +602,10 @@ void Tdelete()
     char found='f',ch;
     string tsub, tid;
     Teacher T;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter Subject of the Teacher : ";
     cin >> tsub;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter ID of Teacher : ";
     cin>>tid;
     ofstream fout("temp.dat",ios::binary);
@@ -589,6 +616,7 @@ void Tdelete()
         { 
             T.TDisplay();
             found='t';
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout<<"\n\nConfirm Record (Y/N) : ";
             cin>>ch;
             ch=toupper(ch);
@@ -721,8 +749,8 @@ void About()
         <<"\nfulfill their dream."
         <<"\n\n    This Delhi branch was the first branch in the chain and is the most"
         <<"\nof all branches. For more information contact us."
-        <<"\n\n\n\n\n\n\n\t\t\t\t\t\tEmail : rbci.delhi@gmail.com"
-        <<"\n\t\t\t\t\t\tContact : 011-99999999";
+        <<"\n\n\n\n\n\n\n\t\t\t\t\t\tEmail : ayushrawat772002@gmail.com"
+        <<"\n\t\t\t\t\t\tContact : 8750029044";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
 }
@@ -749,10 +777,13 @@ class Donate
 void Donate::DEntry()
 {
     system(CLEAR_SCREEN);
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"\n\nEnter Donor ID : ";
     cin>>DID;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter your Name : ";
     getline(cin, Dname);
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout<<"Enter amount you want to donate : ";
     cin>>Donation_Amount;
 }
@@ -807,21 +838,22 @@ void Dsearch()
     Donate D;
     char found='f';
     int id;
-        cout<<"Enter ID of Donor you want to search : ";
-        cin>>id;
-        ifstream inf("ddetail.dat",ios::binary);
-        while(inf.read((char*)&D,sizeof(D)))
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout<<"Enter ID of Donor you want to search : ";
+    cin>>id;
+    ifstream inf("ddetail.dat",ios::binary);
+    while(inf.read((char*)&D,sizeof(D)))
+    {
+        if(D.ret_id() == id)
         {
-            if(D.ret_id() == id)
-            {
-                D.DDisplay();
-                found='t';
-                break;
-            }
+            D.DDisplay();
+            found='t';
+            break;
         }
-        inf.close();
-        if(found=='f')
-        cout<<"\n\nDonor ID not found.!!!";
+    }
+    inf.close();
+    if(found=='f')
+    cout<<"\n\nDonor ID not found.!!!";
     cin.get();
 }
 
@@ -835,7 +867,8 @@ void Donation_Menu()
         <<"\n2. Donation Details."
         <<"\n3. Search donor"
         <<"\n4. Exit."
-        <<"\n\nEnter your choice : ";
+        <<"\n\nEnter your choice : ";1234
+        
         cin>>dm;
             
         if(dm=='1')
